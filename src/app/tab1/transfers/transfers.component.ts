@@ -53,8 +53,8 @@ export class TransfersComponent implements OnInit {
     });
   }
 
-  selectTransfer(transfer, index) {
-    this.selectedTransfer = transfer;
+  selectTransfer(transfer) {
+    this.selectedTransfer = {...transfer};
   }
 
   onAddModalDismissed(event: Event) {

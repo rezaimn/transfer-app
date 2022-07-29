@@ -30,9 +30,9 @@ export class TransfersService {
       );
   }
 
-  removeTransfers(transferId): Observable<boolean> {
+  removeTransfers(transferId): Observable<any> {
     return this.http
-      .delete<boolean>(
+      .delete<any>(
         `http://localhost:3000/transfer/${transferId}`
       );
   }

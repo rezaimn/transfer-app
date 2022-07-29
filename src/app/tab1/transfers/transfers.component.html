@@ -5,7 +5,7 @@
         <ion-text>Transfers Table</ion-text>
       </ion-col>
       <ion-col>
-        <ion-icon (click)="selectTransfer(initializeTransfer,-1)" id="add-modal" class="icons" size="large"
+        <ion-icon (click)="selectTransfer(initializeTransfer)" id="add-modal" class="icons" size="large"
                   name="add-circle-outline" color="primary"></ion-icon>
       </ion-col>
     </ion-row>
@@ -66,9 +66,9 @@
       </ion-col>
 
       <ion-col>
-        <ion-icon (click)="selectTransfer(transfer,i)" class="icons" size="large" name="create-outline" color="primary"
+        <ion-icon (click)="selectTransfer(transfer)" class="icons" size="large" name="create-outline" color="primary"
                   id="update-modal"></ion-icon>
-        <ion-icon (click)="selectTransfer(transfer,i)" class="icons" size="large" name="trash-outline" color="danger"
+        <ion-icon (click)="selectTransfer(transfer)" class="icons" size="large" name="trash-outline" color="danger"
                   id="remove-modal"></ion-icon>
       </ion-col>
     </ion-row>
