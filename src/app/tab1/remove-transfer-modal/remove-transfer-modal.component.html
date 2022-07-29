@@ -1,0 +1,20 @@
+<ng-container>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (click)="cancel()">Cancel</ion-button>
+      </ion-buttons>
+      <ion-title>Remove Transfer</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="transfer-content">
+    <ion-row>
+      <ion-text>{{message}}</ion-text>
+    </ion-row>
+    <ion-row>
+      <ion-button size="small" color="success" (click)="confirm()">Yes</ion-button>
+      <ion-button size="small" color="danger" (click)="cancel()">No</ion-button>
+    </ion-row>
+
+  </ion-content>
+</ng-container>

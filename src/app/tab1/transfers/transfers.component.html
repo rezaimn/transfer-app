@@ -1,0 +1,96 @@
+<ion-content>
+  <ion-grid class="ion-text-center">
+    <ion-row class="ion-margin">
+      <ion-col class="header-title">
+        <ion-text>Transfers Table</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-icon (click)="selectTransfer(initializeTransfer,-1)" id="add-modal" class="icons" size="large"
+                  name="add-circle-outline" color="primary"></ion-icon>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="header-row">
+      <ion-col>
+        <ion-text>Account Holder</ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>IBAN</ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>Amount</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text>Date</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text>Note</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text>Actions</ion-text>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row *ngFor="let transfer of transfers$ | async; let i =index">
+      <ion-col>
+        <ion-text>
+          {{transfer.accountHolder}}
+        </ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>
+          {{transfer.iban}}
+        </ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>
+          {{transfer.amount}}
+        </ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>
+          {{transfer.date}}
+        </ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>
+          {{transfer.note}}
+        </ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-icon (click)="selectTransfer(transfer,i)" class="icons" size="large" name="create-outline" color="primary"
+                  id="update-modal"></ion-icon>
+        <ion-icon (click)="selectTransfer(transfer,i)" class="icons" size="large" name="trash-outline" color="danger"
+                  id="remove-modal"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-modal #addModal trigger="add-modal" (willDismiss)="onAddModalDismissed($event)">
+  <ng-template>
+    <app-transform-add-update-modal [transfer]="selectedTransfer" [modal]="addModal"></app-transform-add-update-modal>
+  </ng-template>
+</ion-modal>
+
+
+<ion-modal #updateModal trigger="update-modal" (willDismiss)="onUpdateModalDismissed($event)">
+  <ng-template>
+    <app-transform-add-update-modal [transfer]="selectedTransfer"
+                                    [modal]="updateModal"></app-transform-add-update-modal>
+  </ng-template>
+</ion-modal>
+
+<ion-modal #removeModal trigger="remove-modal" (willDismiss)="onRemoveModalDismissed($event)">
+  <ng-template>
+    <app-remove-transfer-modal [modal]="removeModal"></app-remove-transfer-modal>
+  </ng-template>
+</ion-modal>

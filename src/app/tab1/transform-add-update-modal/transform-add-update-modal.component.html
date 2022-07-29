@@ -1,0 +1,40 @@
+<ng-container>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (click)="cancel()">Cancel</ion-button>
+      </ion-buttons>
+      <ion-title>Add and Update Transfer</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="transfer-content">
+    <ion-list>
+      <ion-item>
+        <ion-label>Account Holder</ion-label>
+        <ion-input name="accountHolder" [(ngModel)]="transfer.accountHolder"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>IBAN</ion-label>
+        <ion-input  name="iban" [(ngModel)]="transfer.iban"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Amount</ion-label>
+        <ion-input type="number"  name="amount" [(ngModel)]="transfer.amount"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Date</ion-label>
+        <ion-datetime  name="date" [(ngModel)]="transfer.date"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Note</ion-label>
+        <ion-textarea  name="note" [(ngModel)]="transfer.note" rows="4" placeholder="Note ..."></ion-textarea>
+      </ion-item>
+    </ion-list>
+    <ion-button size="small" color="success" (click)="confirm()">Save</ion-button>
+    <ion-button size="small" color="danger" (click)="cancel()">Cancel</ion-button>
+  </ion-content>
+</ng-container>
