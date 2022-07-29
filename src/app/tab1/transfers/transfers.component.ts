@@ -6,7 +6,7 @@ import {addTransfer, removeTransfer, retrievedTransferList, updateTransfer} from
 import {initializeTransfer, TransfersModel} from './transfers.model';
 import {OverlayEventDetail} from '@ionic/core/components';
 import {IonModal} from '@ionic/angular';
-import uuidStringify from 'uuid';
+import {stringify} from 'uuid';
 
 @Component({
   selector: 'app-transfers',
@@ -84,6 +84,6 @@ export class TransfersComponent implements OnInit {
       0x6e, 0xc0, 0xbd, 0x7f, 0x11, 0xc0, 0x43, 0xda, 0x97, 0x5e, 0x2a, 0x8a, 0xd9, 0xeb, 0xae, 0x0b,
     ];
 
-    return uuidStringify(uuidBytes);
+    return stringify(uuidBytes);
   }
 }
