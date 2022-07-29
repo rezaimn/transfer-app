@@ -6,6 +6,7 @@ import {addTransfer, removeTransfer, retrievedTransferList, updateTransfer} from
 import {initializeTransfer, TransfersModel} from './transfers.model';
 import {OverlayEventDetail} from '@ionic/core/components';
 import {IonModal} from '@ionic/angular';
+import uuidStringify from 'uuid';
 
 @Component({
   selector: 'app-transfers',
@@ -13,10 +14,10 @@ import {IonModal} from '@ionic/angular';
   styleUrls: ['./transfers.component.scss'],
 })
 export class TransfersComponent implements OnInit {
-  initializeTransfer:TransfersModel= initializeTransfer;
   @ViewChild('addModal') addModal: IonModal;
   @ViewChild('updateModal') updateModal: IonModal;
   @ViewChild('removeModal') removeModal: IonModal;
+  initializeTransfer: TransfersModel = initializeTransfer;
   transfers$ = this.store.pipe(select(selectTransfers));
   selectedTransfer: TransfersModel;
 
@@ -59,7 +60,8 @@ export class TransfersComponent implements OnInit {
   onAddModalDismissed(event: Event) {
     const ev = event as CustomEvent<OverlayEventDetail<string>>;
     if (ev.detail.role === 'confirm') {
-      this.onAdd(ev.detail.data);
+      const body: any = ev.detail.data;
+      this.onAdd({...body, id: this.generateUUID()});
     }
   }
 
@@ -75,5 +77,13 @@ export class TransfersComponent implements OnInit {
     if (ev.detail.role === 'confirm') {
       this.onRemove(this.selectedTransfer.id);
     }
+  }
+
+  generateUUID() {
+    const uuidBytes = [
+      0x6e, 0xc0, 0xbd, 0x7f, 0x11, 0xc0, 0x43, 0xda, 0x97, 0x5e, 0x2a, 0x8a, 0xd9, 0xeb, 0xae, 0x0b,
+    ];
+
+    return uuidStringify(uuidBytes);
   }
 }
